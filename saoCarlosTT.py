@@ -4,7 +4,7 @@ import pandas as pd
 import snscrape.modules.twitter as sntwitter
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+from PIL._imaging import display
 
 user_list = []
 
@@ -12,9 +12,10 @@ user_list = []
 def main():
     print("ok")
     load_user()
-    auto_search_all_user()
+    # auto_search_all_user()
+    #read_csv_treat_data()
     # generate_graphical_view()
-    #searchtwittsforuser("")
+    searchtwittsforuser("marrrtiinnn")
     return 0
 
 
@@ -73,10 +74,26 @@ def generate_graphical_view():
             f = os.path.join(patlocate, filename)
             if os.path.isfile(f):
                 data_tt = pandas.read_csv(filename)
-                sns.countplot(data_tt['Username'], data_tt['DateTime'])
-                plt.savefig(f'{final_locate}{data_tt["Username"]}.png', dpi=300)
+                sns.countplot(x="Tweet", data=data_tt)
+                file_csv = filename.replace(".csv", "")
+                final_locate = os.path.join(final_locate + file_csv)
+                plt.savefig(f'{final_locate}.png', dpi=300)
     except RecursionError:
         print("Falha na leitura do diretorio")
+
+
+def read_csv_treat_data():
+    pat_locate = os.getcwd()
+    pat_search = os.path.join(pat_locate + "\\Retornos")
+    os.chdir(pat_search)
+    for filename in os.listdir(pat_search):
+        if os.path.isfile(filename):
+            dataf = pd.read_csv(filename)
+            ocur = dataf.groupby(['Datetime', "Tweet"]).size()
+            print(ocur)
+            usuario = filename.replace(".csv", " ").strip()
+            #pat_save = os.path.join(pat_locate, f"\\RetornosTratados\\{usuario}")
+            ocur.to_csv(fr"{usuario}_tratato.csv", index=None, sep=',')
 
 
 if __name__ == '__main__':
