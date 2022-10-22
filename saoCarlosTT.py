@@ -12,20 +12,21 @@ user_list = []
 def main():
     print("ok")
     # load_user()
-    # auto_search_all_user()
-    generate_graphical_view()
-    # searchtwittsforuser("vadiabaiana")
+    auto_search_all_user()
+    # generate_graphical_view()
+    #searchtwittsforuser("")
     return 0
 
 
 def searchtwittsforuser(user):
     diretorio = fr"C:\\Users\\leona\\PycharmProjects\\pythonProject1\\Retornos\\{user}"
-    if not os.path.exists(f'{diretorio}.csv'):
+    if not os.path.isfile(f'{diretorio}.csv'):
         tweets_list1 = []
         for i, tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{user}').get_items()):
             if i > 3000:
                 break
-            tweets_list1.append([tweet.date, tweet.id, tweet.content, tweet.media, tweet.user.username])
+
+            tweets_list1.append([tweet.date.year, tweet.id, tweet.content, tweet.media, tweet.user.username])
 
         if tweets_list1.__len__() > 0:
             df = pd.DataFrame(tweets_list1, columns=['Datetime', 'Tweet Id', 'Tweet', 'Media', 'Username'])
