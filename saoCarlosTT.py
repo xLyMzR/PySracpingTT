@@ -11,7 +11,7 @@ user_list = []
 
 def main():
     print("ok")
-    # load_user()
+    load_user()
     auto_search_all_user()
     # generate_graphical_view()
     #searchtwittsforuser("")
