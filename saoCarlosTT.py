@@ -6,8 +6,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from PIL._imaging import display
 
-menu_txt = "-------- TTT VIZUAL - TRAINING DATA MINING WITH PANDAS ---------\n * CARREGAR USUARIOS TT PARA MEMORIA(1)\n" \
-           " *Coletar Dados Usuarios Cadastrados(2)\n * TratarDados(3)\n * Gerar Graficos(4)\n * Procurar Usuario especifico(5) \n Sair(6)"
 user_list = []
 
 
@@ -103,8 +101,6 @@ def read_csv_treat_data():
             # usuario = filename.replace(".csv", " ").strip()
             # pat_save = os.path.join(pat_locate, f"\\RetornosTratados\\{usuario}")
             # ocur.to_csv(fr"{usuario}_tratato.csv")
-
-
 
 
 if __name__ == '__main__':
