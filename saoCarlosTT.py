@@ -6,17 +6,22 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from PIL._imaging import display
 
+menu_txt = "-------- TTT VIZUAL - TRAINING DATA MINING WITH PANDAS ---------\n * CARREGAR USUARIOS TT PARA MEMORIA(1)\n" \
+           " *Coletar Dados Usuarios Cadastrados(2)\n * TratarDados(3)\n * Gerar Graficos(4)\n * Procurar Usuario especifico(5) \n Sair(6)"
 user_list = []
 
 
 def main():
     print("ok")
-    load_user()
-    # auto_search_all_user()
-    #read_csv_treat_data()
-    # generate_graphical_view()
-    searchtwittsforuser("marrrtiinnn")
+    executar_menu()
     return 0
+
+
+def executar_menu():
+    # searchtwittsforuser()
+    # auto_search_all_user
+    # generate_graphical_view()
+    read_csv_treat_data()
 
 
 def searchtwittsforuser(user):
@@ -86,14 +91,20 @@ def read_csv_treat_data():
     pat_locate = os.getcwd()
     pat_search = os.path.join(pat_locate + "\\Retornos")
     os.chdir(pat_search)
+
     for filename in os.listdir(pat_search):
         if os.path.isfile(filename):
             dataf = pd.read_csv(filename)
-            ocur = dataf.groupby(['Datetime', "Tweet"]).size()
-            print(ocur)
-            usuario = filename.replace(".csv", " ").strip()
-            #pat_save = os.path.join(pat_locate, f"\\RetornosTratados\\{usuario}")
-            ocur.to_csv(fr"{usuario}_tratato.csv", index=None, sep=',')
+            ocur = dataf.groupby(["Datetime", "Tweet"]).size()
+            pat_save = os.path.join(pat_locate)
+            pat_save_csv = os.path.join(pat_save+f"\\RetornosTratados\\{filename}")
+            ocur.to_csv(f"{pat_save_csv}")
+
+            # usuario = filename.replace(".csv", " ").strip()
+            # pat_save = os.path.join(pat_locate, f"\\RetornosTratados\\{usuario}")
+            # ocur.to_csv(fr"{usuario}_tratato.csv")
+
+
 
 
 if __name__ == '__main__':
