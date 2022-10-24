@@ -3,7 +3,7 @@ Uma pequena demonstração para treinamento utilizando biblioteca de scraping pa
 
 ## Scraping ##
 
-Utilizado a biblioteca snscrap para realizar o scraping
+Utilizado a biblioteca "snscrap" para realizar o scraping
 de dados do Twitter.
 
 Link Para Acesso: 
@@ -13,6 +13,9 @@ _OBS_:
 
 - Foi imposto um limite de 3000 tweets por usuario
 
+- As requisições para a bibliote foram feitas isoladamente por usuário
+
+- Os anos filtrados na coleta estão entre: {2016 - 2022}
 
 - Todos os usuarios foram traçados previamente e seus nomes de usuario colocados em arquivo txt.
 
