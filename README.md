@@ -42,7 +42,7 @@ Link acesso:
 
 - https://matplotlib.org/stable/tutorials/introductory/pyplot.html
 
-Exemplo Data View :
+_Exemplo Data View :_
 
 ![graphic-anacruzzs](https://user-images.githubusercontent.com/91917320/197568326-a0f1d65f-9098-4ef0-bc58-1a7f1bca0365.png)
 
