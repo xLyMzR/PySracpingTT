@@ -1,5 +1,4 @@
 import os
-import pandas
 import pandas as pd
 import snscrape.modules.twitter as sntwitter
 import seaborn as sns
