@@ -16,14 +16,12 @@ def main():
 
 
 def executar_menu():
-     #searchtwittsforuser("arturdmartins", 0)
+    # searchtwittsforuser("arturdmartins", 0)
     # dicionario_dump_to()
     # auto_search_all_user
-    #generate_graphical_view()
-    read_csv_treat_data()
-    #teste_plot()
-    #teste_dict()
-    #teste_plot()
+     generate_graphical_view()
+    # read_csv_treat_data()
+
 
 def searchtwittsforuser(user, num_user):
     diretorio = fr"C:\\Users\\leona\\PycharmProjects\\pythonProject1\\Retornos\\{user}"
@@ -69,7 +67,7 @@ def generate_graphical_view():
     patlocate = os.getcwd()
     final_locate = os.path.join(patlocate + "\\Graphics")
     # the patch for dir with csv files
-    patlocate += os.path.join("\\Retornos")
+    patlocate += os.path.join("\\RetornosTratados")
     print(patlocate)
     try:
         os.chdir(patlocate)
@@ -78,12 +76,13 @@ def generate_graphical_view():
             f = os.path.join(patlocate, filename)
             if os.path.isfile(f):
                 data_tt = pandas.read_csv(filename)
-                print(data_tt)
-                #file_png = filename.replace(".csv", ".png")
-                #final_locate = os.path.join(final_locate +f"\\{file_png}")
-                data_tt.plot(x='Tweet', y='Datetime', kind = 'bar')
-                plt.show()
-                #plt.savefig(f'C:\\Users\\leona\\PycharmProjects\\pythonProject1\\Graphics\\{file_png}', dpi=300)
+                data_tt.plot(x='Datetime', y='Freq', kind = 'bar')
+                nome_arq_final = filename.replace('.csv', '.png')
+                nome_arq_final = nome_arq_final.replace("tratado-", "graphic-")
+                print(nome_arq_final)
+                arch_save_file = os.path.join(final_locate + f"\\{nome_arq_final}")
+                plt.savefig(f"{arch_save_file}")
+
     except RecursionError:
         print("Falha na leitura do diretorio")
 
@@ -106,15 +105,6 @@ def read_csv_treat_data():
         else:
             continue
 
-def teste_dict():
-    print(dicionario)
-
-def teste_plot():
-    data = {"Ano": ['2017', '2018', '2019', '2020', '2021', '2022'], "Tweets":[30, 120, 140, 12, 400, 230]}
-    datafr = pd.DataFrame(data, columns=['Ano', 'Tweets'])
-    datafr.plot(x='Ano', y="Tweets", kind='bar')
-    plt.savefig('graph')
-    plt.show()
 
 if __name__ == '__main__':
     main()
